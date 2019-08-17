@@ -1,0 +1,11 @@
+pptpd
+pptpctrl
+bcrelay
+Makefile
+config.cache
+config.log
+config.status
+pptpd-*.tar.gz
+*.o
+config.h
+stamp-h

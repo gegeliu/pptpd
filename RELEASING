@@ -1,0 +1,79 @@
+Releasing pptpd
+
+git pull
+decide on version number
+update version number in the following files
+	pptpd.spec
+	configure.in
+	debian/changelog
+run ./reconf
+update NEWS, ChangeLog
+commit changes
+tag, see README.cvs, for example:
+	git tag 1.4.0
+make dist
+md5sum
+gpg --detach-sign --armor
+test
+
+
+Test Plan
+
+a) unpacks into subdirectory with correct package and version string,
+b) "./configure"
+c) "make"
+d) "make install"
+e) set configuration files for a tunnel, establish two tunnels, ping,
+   ssh, scp 10Mb random data, close tunnel, re-establish, ping, close
+   tunnels.
+f) "make uninstall"
+
+SourceForge
+
+ftp -n upload.sourceforge.net <<EOF
+user anonymous qz@hp.com
+cd incoming
+hash
+passive
+put pptpd-1.4.0.tar.gz
+quit
+EOF
+http://sourceforge.net/
+Login
+Poptop
+Admin
+File Releases
+Add Release "pptpd-1.4.0 (experimental)" to package "pptpd"
+
+Announcement
+
+To: poptop-server@lists.sourceforge.net
+Subject: pptpd-1.4.0 released
+
+G'day,
+
+pptpd 1.4.0 has been released.
+
+Please reply to the mailing list with your test results.
+
+See:
+        http://sourceforge.net/projects/poptop (click on Files)
+        http://sourceforge.net/project/showfiles.php?group_id=44827
+
+Checksums:
+	??  pptpd-1.4.0.tar.gz
+
+Changes to pptpd since 1.3.4 are:
+
+See the detailed ChangeLog
+
+--
+
+Cryptographically sign the mail.
+
+--
+
+Update versions.inc on web site http://poptop.sourceforge.net/
+Update versions on web site http://poptop.org/ via robertw@snapgear.com
+
+--
